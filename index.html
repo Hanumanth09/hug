@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Quotes Proposal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans:wght@400;600&display=swap');
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://i.pinimg.com/originals/29/bc/b3/29bcb3c3afa733817beab7f2c836d232.jpg') no-repeat center center fixed;
+            background-size: calc(300,500);
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            margin-bottom: 800px;
+            width: 100vw;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 500px;
+            background-size: calc(10,20);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+            background: url("https://wishemsg.com/wp-content/uploads/2023/11/Happy-Hug-Day-Wishes2.jpg") no-repeat;
+            
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            color: #e91e63;
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            opacity: 0;
+            animation: fadeInText 1s forwards 0.5s;
+        }
+        .quote {
+            font-size: 22px;
+            font-family: 'Dancing Script', cursive;
+            margin: 20px 0;
+            opacity: 0;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            transition: transform 0.3s, opacity 0.5s;
+            opacity: 0;
+            animation: fadeInText 1s forwards 1s;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        button:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes rotateIn {
+            from {
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+            to {
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>For You, Lakshmi ❤️</h1>
+        <p class="quote" id="quote"></p>
+        <div class="buttons">
+            <button id="prev" onclick="changeQuote(-1)" disabled>Previous</button>
+            <button id="next" onclick="changeQuote(1)">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const quotes = [
+            "You are my today and all of my tomorrows.",
+            "Every love story is beautiful, but ours is my favorite.",
+            "You make my heart skip a beat.",
+            "I never knew what love was until I met you.",
+            "In your arms, I find my home.",
+            "Loving you is my favorite adventure.",
+            "With you, every moment is special.",
+            "You are the reason behind my smile.",
+            "My love for you grows stronger every day.",
+            "Will you be mine forever? ❤️"
+        ];
+        
+        const animations = ['fadeInText', 'slideIn', 'scaleUp', 'rotateIn'];
+        let index = 0;
+        const quoteElement = document.getElementById("quote");
+        const prevButton = document.getElementById("prev");
+        const nextButton = document.getElementById("next");
+        
+        function updateQuote() {
+            const animation = animations[index % animations.length];
+            quoteElement.style.opacity = "0";
+            quoteElement.style.animation = "none";
+            setTimeout(() => {
+                quoteElement.textContent = quotes[index];
+                quoteElement.style.animation = `${animation} 1s forwards`;
+            }, 300);
+            prevButton.disabled = index === 0;
+            nextButton.disabled = index === quotes.length - 1;
+        }
+        
+        function changeQuote(step) {
+            index += step;
+            updateQuote();
+        }
+        
+        updateQuote();
+    </script>
+</body>
+</html>
